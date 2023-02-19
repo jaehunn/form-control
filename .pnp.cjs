@@ -28,6 +28,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {\
           "packageLocation": "./",\
           "packageDependencies": [\
+            ["@types/node", "npm:18.14.0"],\
             ["@types/react", "npm:18.0.28"],\
             ["@types/react-dom", "npm:18.0.11"],\
             ["@vitejs/plugin-react", "virtual:7b6a5016a755b40b4cf3476207a73044626c1cdc38d93a4a08d7fbc9891a2333f33a3563c339a33a8bf57e5c3827931b8ef7cd8aa3fd4d3c7d1ebe78f4b0c2d5#npm:3.1.0"],\
@@ -665,6 +666,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@types/node", [\
+        ["npm:18.14.0", {\
+          "packageLocation": "./.yarn/cache/@types-node-npm-18.14.0-ddc1a221d2-d83fcf5e4e.zip/node_modules/@types/node/",\
+          "packageDependencies": [\
+            ["@types/node", "npm:18.14.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@types/prop-types", [\
         ["npm:15.7.5", {\
           "packageLocation": "./.yarn/cache/@types-prop-types-npm-15.7.5-2aa48aa177-5b43b8b154.zip/node_modules/@types/prop-types/",\
@@ -1125,6 +1135,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["form-control", "workspace:."],\
+            ["@types/node", "npm:18.14.0"],\
             ["@types/react", "npm:18.0.28"],\
             ["@types/react-dom", "npm:18.0.11"],\
             ["@vitejs/plugin-react", "virtual:7b6a5016a755b40b4cf3476207a73044626c1cdc38d93a4a08d7fbc9891a2333f33a3563c339a33a8bf57e5c3827931b8ef7cd8aa3fd4d3c7d1ebe78f4b0c2d5#npm:3.1.0"],\
@@ -2160,7 +2171,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["vite", "virtual:7b6a5016a755b40b4cf3476207a73044626c1cdc38d93a4a08d7fbc9891a2333f33a3563c339a33a8bf57e5c3827931b8ef7cd8aa3fd4d3c7d1ebe78f4b0c2d5#npm:4.1.2"],\
             ["@types/less", null],\
-            ["@types/node", null],\
+            ["@types/node", "npm:18.14.0"],\
             ["@types/sass", null],\
             ["@types/stylus", null],\
             ["@types/sugarss", null],\
