@@ -1,21 +1,19 @@
-import { useState } from "react";
+import { useRef } from "react";
+
+import UserInputGroup, { UserInputValues } from "./UserInputGroup";
+import PasswordInputGroup, { PasswordInputValues } from "./PasswordInputGroup";
 
 const Login = () => {
-  const [formValues, setFormValues] = useState({
-    username: "",
-    password: "",
-  });
-
-  const handleChange = ({
-    target: { name, value },
-  }: React.ChangeEvent<HTMLInputElement>) => {
-    setFormValues({ ...formValues, [name]: value });
-  };
+  const userInputGroupRef = useRef<{ values: UserInputValues } | null>(null);
+  const passwordInputGroupRef = useRef<{ values: PasswordInputValues } | null>(
+    null
+  );
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log(formValues);
+    console.log(userInputGroupRef?.current?.values);
+    console.log(passwordInputGroupRef?.current?.values);
   };
 
   return (
@@ -26,42 +24,8 @@ const Login = () => {
         </h1>
 
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <div>
-            <label
-              htmlFor="username"
-              className="block text-sm font-medium leading-6 text-gray-900"
-            >
-              Username or email address
-            </label>
-
-            <input
-              id="username"
-              type="text"
-              name="username"
-              value={formValues.username}
-              onChange={handleChange}
-              autoComplete="off"
-              className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500"
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium leading-6 text-gray-900"
-            >
-              Password
-            </label>
-            <input
-              id="password"
-              type="text"
-              name="password"
-              value={formValues.password}
-              onChange={handleChange}
-              autoComplete="off"
-              className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 "
-            />
-          </div>
+          <UserInputGroup ref={userInputGroupRef} />
+          <PasswordInputGroup ref={passwordInputGroupRef} />
 
           <div>
             <button
