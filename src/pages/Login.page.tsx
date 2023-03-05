@@ -1,4 +1,23 @@
+import { useState } from "react";
+
 const Login = () => {
+  const [formValues, setFormValues] = useState({
+    username: "",
+    password: "",
+  });
+
+  const handleChange = ({
+    target: { name, value },
+  }: React.ChangeEvent<HTMLInputElement>) => {
+    setFormValues({ ...formValues, [name]: value });
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    console.log(formValues);
+  };
+
   return (
     <div className="flex w-full min-h-full items-center justify-center py-12 px-4 ">
       <div className="w-full max-w-md space-y-8">
@@ -6,7 +25,7 @@ const Login = () => {
           Login Page
         </h1>
 
-        <form className="mt-8 space-y-6">
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div>
             <label
               htmlFor="username"
@@ -19,7 +38,8 @@ const Login = () => {
               id="username"
               type="text"
               name="username"
-              value=""
+              value={formValues.username}
+              onChange={handleChange}
               autoComplete="off"
               className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500"
             />
@@ -36,7 +56,8 @@ const Login = () => {
               id="password"
               type="text"
               name="password"
-              value=""
+              value={formValues.password}
+              onChange={handleChange}
               autoComplete="off"
               className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 "
             />
