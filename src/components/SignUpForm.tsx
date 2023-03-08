@@ -1,74 +1,41 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useRef, useState } from "react";
+
 import Button from "./Button";
 import TextInput from "./TextInput";
+import NameInputGroup, { NameInputValues } from "./NameInputGroup";
+import PasswordInputGroup, { PasswordInputValues } from "./PasswordInputGroup";
 
 const SignUpForm = () => {
-  const [formValues, setFormValues] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
+  const nameInputRef = useRef<{ values: NameInputValues } | null>(null);
+  const passwordInputRef = useRef<{ values: PasswordInputValues } | null>(null);
 
-  const handleChange = ({
-    target: { name, value },
-  }: ChangeEvent<HTMLInputElement>) => {
-    setFormValues({
-      ...formValues,
-      [name]: value,
-    });
-  };
+  const [email, setEmail] = useState("");
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log(formValues);
+    console.log({
+      ...nameInputRef?.current?.values,
+      ...passwordInputRef?.current?.values,
+      email,
+    });
   };
 
   return (
     <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
       <div className="flex justify-between items-center">
-        <TextInput
-          id="first-name"
-          label="First Name"
-          name="firstName"
-          value={formValues.firstName}
-          onChange={handleChange}
-        />
-
-        <TextInput
-          id="last-name"
-          label="Last Name"
-          name="lastName"
-          value={formValues.lastName}
-          onChange={handleChange}
-        />
+        <NameInputGroup ref={nameInputRef} />
       </div>
 
       <TextInput
         id="email "
         label="Email"
         name="email"
-        value={formValues.email}
-        onChange={handleChange}
+        value={email}
+        onChange={({ target: { value } }) => setEmail(value)}
       />
 
-      <TextInput
-        id="password"
-        label="Password"
-        name="password"
-        value={formValues.password}
-        onChange={handleChange}
-      />
-
-      <TextInput
-        id="confirm-password"
-        label="Confirm Password"
-        name="confirmPassword"
-        value={formValues.confirmPassword}
-        onChange={handleChange}
-      />
+      <PasswordInputGroup ref={passwordInputRef} />
 
       <div>
         <Button type="submit">Continue</Button>
