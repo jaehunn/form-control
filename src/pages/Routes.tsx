@@ -9,7 +9,7 @@ const Routes = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/sign-up" element={<SignUp />} />
 
-      <Route path="*" element={<Navigate replace to="/login" />} />
+      <Route path="*" element={<Navigate replace to="/sign-up" />} />
     </ReactRouterRoutes>
   );
 };
