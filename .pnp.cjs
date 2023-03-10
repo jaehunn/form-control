@@ -36,7 +36,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss", "npm:8.4.21"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:7b6a5016a755b40b4cf3476207a73044626c1cdc38d93a4a08d7fbc9891a2333f33a3563c339a33a8bf57e5c3827931b8ef7cd8aa3fd4d3c7d1ebe78f4b0c2d5#npm:18.2.0"],\
+            ["react-hook-form", "virtual:7b6a5016a755b40b4cf3476207a73044626c1cdc38d93a4a08d7fbc9891a2333f33a3563c339a33a8bf57e5c3827931b8ef7cd8aa3fd4d3c7d1ebe78f4b0c2d5#npm:7.43.5"],\
             ["react-router-dom", "virtual:7b6a5016a755b40b4cf3476207a73044626c1cdc38d93a4a08d7fbc9891a2333f33a3563c339a33a8bf57e5c3827931b8ef7cd8aa3fd4d3c7d1ebe78f4b0c2d5#npm:6.8.2"],\
+            ["tailwind-merge", "npm:1.10.0"],\
             ["tailwindcss", "virtual:7b6a5016a755b40b4cf3476207a73044626c1cdc38d93a4a08d7fbc9891a2333f33a3563c339a33a8bf57e5c3827931b8ef7cd8aa3fd4d3c7d1ebe78f4b0c2d5#npm:3.2.7"],\
             ["typescript", "patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=23ec76"],\
             ["vite", "virtual:7b6a5016a755b40b4cf3476207a73044626c1cdc38d93a4a08d7fbc9891a2333f33a3563c339a33a8bf57e5c3827931b8ef7cd8aa3fd4d3c7d1ebe78f4b0c2d5#npm:4.1.4"]\
@@ -1400,7 +1402,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss", "npm:8.4.21"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:7b6a5016a755b40b4cf3476207a73044626c1cdc38d93a4a08d7fbc9891a2333f33a3563c339a33a8bf57e5c3827931b8ef7cd8aa3fd4d3c7d1ebe78f4b0c2d5#npm:18.2.0"],\
+            ["react-hook-form", "virtual:7b6a5016a755b40b4cf3476207a73044626c1cdc38d93a4a08d7fbc9891a2333f33a3563c339a33a8bf57e5c3827931b8ef7cd8aa3fd4d3c7d1ebe78f4b0c2d5#npm:7.43.5"],\
             ["react-router-dom", "virtual:7b6a5016a755b40b4cf3476207a73044626c1cdc38d93a4a08d7fbc9891a2333f33a3563c339a33a8bf57e5c3827931b8ef7cd8aa3fd4d3c7d1ebe78f4b0c2d5#npm:6.8.2"],\
+            ["tailwind-merge", "npm:1.10.0"],\
             ["tailwindcss", "virtual:7b6a5016a755b40b4cf3476207a73044626c1cdc38d93a4a08d7fbc9891a2333f33a3563c339a33a8bf57e5c3827931b8ef7cd8aa3fd4d3c7d1ebe78f4b0c2d5#npm:3.2.7"],\
             ["typescript", "patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=23ec76"],\
             ["vite", "virtual:7b6a5016a755b40b4cf3476207a73044626c1cdc38d93a4a08d7fbc9891a2333f33a3563c339a33a8bf57e5c3827931b8ef7cd8aa3fd4d3c7d1ebe78f4b0c2d5#npm:4.1.4"]\
@@ -2391,6 +2395,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["react-hook-form", [\
+        ["npm:7.43.5", {\
+          "packageLocation": "./.yarn/cache/react-hook-form-npm-7.43.5-619b9b3e0a-cfd757ac24.zip/node_modules/react-hook-form/",\
+          "packageDependencies": [\
+            ["react-hook-form", "npm:7.43.5"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:7b6a5016a755b40b4cf3476207a73044626c1cdc38d93a4a08d7fbc9891a2333f33a3563c339a33a8bf57e5c3827931b8ef7cd8aa3fd4d3c7d1ebe78f4b0c2d5#npm:7.43.5", {\
+          "packageLocation": "./.yarn/__virtual__/react-hook-form-virtual-8357916036/0/cache/react-hook-form-npm-7.43.5-619b9b3e0a-cfd757ac24.zip/node_modules/react-hook-form/",\
+          "packageDependencies": [\
+            ["react-hook-form", "virtual:7b6a5016a755b40b4cf3476207a73044626c1cdc38d93a4a08d7fbc9891a2333f33a3563c339a33a8bf57e5c3827931b8ef7cd8aa3fd4d3c7d1ebe78f4b0c2d5#npm:7.43.5"],\
+            ["@types/react", "npm:18.0.28"],\
+            ["react", "npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["react-refresh", [\
         ["npm:0.14.0", {\
           "packageLocation": "./.yarn/cache/react-refresh-npm-0.14.0-78ef5eeb73-dc69fa8c99.zip/node_modules/react-refresh/",\
@@ -2704,6 +2730,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/supports-preserve-symlinks-flag-npm-1.0.0-f17c4d0028-53b1e247e6.zip/node_modules/supports-preserve-symlinks-flag/",\
           "packageDependencies": [\
             ["supports-preserve-symlinks-flag", "npm:1.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["tailwind-merge", [\
+        ["npm:1.10.0", {\
+          "packageLocation": "./.yarn/cache/tailwind-merge-npm-1.10.0-8bf3db61d4-80eb30d030.zip/node_modules/tailwind-merge/",\
+          "packageDependencies": [\
+            ["tailwind-merge", "npm:1.10.0"]\
           ],\
           "linkType": "HARD"\
         }]\
