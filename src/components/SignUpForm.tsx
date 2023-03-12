@@ -1,19 +1,21 @@
-import { FormEvent } from "react";
+import { FormEvent, useRef } from "react";
+
 import Button from "./Button";
 import TextInput from "./TextInput";
 
 const SignUpForm = () => {
+  const formRef = useRef<HTMLFormElement | null>(null);
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const formData = new FormData(e.currentTarget);
-    const values = Object.fromEntries(formData.entries());
+    console.log(formRef.current?.childNodes);
 
-    console.log(values);
+    // Do Something...
   };
 
   return (
-    <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+    <form ref={formRef} className="mt-8 space-y-6" onSubmit={handleSubmit}>
       <div className="flex justify-between items-center">
         <TextInput id="first-name" label="First Name" name="firstName" />
         <TextInput id="last-name" label="Last Name" name="lastName" />
