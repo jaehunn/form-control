@@ -6,7 +6,7 @@ import Button from "./Button";
 import Message from "./Message";
 import TextInput from "./TextInput";
 
-type FormValues = {
+export type FormValues = {
   firstName: string;
   lastName: string;
   email: string;
@@ -58,8 +58,10 @@ const SignUpForm = ({ className, ...props }: Props) => {
     console.log(values);
   };
 
-  const onInValidSubmit: SubmitErrorHandler<FormValues> = (values) => {
-    console.log(values);
+  const onInValidSubmit: SubmitErrorHandler<FormValues> = (errorValues) => {
+    console.log(errorValues);
+
+    alert("다시 입력해주세요.");
   };
 
   return (
