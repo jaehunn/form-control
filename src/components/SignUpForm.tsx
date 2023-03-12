@@ -1,5 +1,7 @@
 import { FormHTMLAttributes } from "react";
 import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
 import { twMerge } from "tailwind-merge";
 
 import Button from "./Button";
@@ -21,38 +23,33 @@ const MAX_LENGTH = {
   confirmPassword: 15,
 } as const;
 
-const ERRORS_MESSAGE: { [K in keyof FormValues]: { [T: string]: string } } = {
-  firstName: {
-    required: "입력해주세요.",
-    maxLength: `${MAX_LENGTH["firstName"]}자 이내로 입력해주세요.`,
-  },
-  lastName: {
-    required: "입력해주세요.",
-    maxLength: `${MAX_LENGTH["lastName"]}자 이내로 입력해주세요.`,
-  },
-  email: {
-    required: "입력해주세요.",
-  },
-  password: {
-    required: "입력해주세요.",
-    maxLength: `${MAX_LENGTH["password"]}자 이내로 입력해주세요.`,
-  },
-  confirmPassword: {
-    required: "입력해주세요.",
-    maxLength: `${MAX_LENGTH["confirmPassword"]}자 이내로 입력해주세요.`,
-  },
-} as const;
-
 type Props = FormHTMLAttributes<HTMLFormElement> & {
   className?: string;
 };
+
+const VALIDATION_SCHEMA = Yup.object({
+  firstName: Yup.string()
+    .required("필수 입력값입니다")
+    .max(MAX_LENGTH["firstName"], "10자 미만으로 입력해주세요."),
+  lastName: Yup.string()
+    .required("필수 입력값입니다")
+    .max(MAX_LENGTH["lastName"], "10자 미만으로 입력해주세요"),
+  email: Yup.string().required("필수 입력값입니다"),
+  password: Yup.string().required("필수 입력값입니다"),
+  confirmPassword: Yup.string().oneOf(
+    [Yup.ref("password")],
+    "패스워드와 일치하지않아요."
+  ),
+}).required();
 
 const SignUpForm = ({ className, ...props }: Props) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValues>();
+  } = useForm<FormValues>({
+    resolver: yupResolver(VALIDATION_SCHEMA),
+  });
 
   const onValidSubmit: SubmitHandler<FormValues> = (values) => {
     console.log(values);
@@ -85,7 +82,7 @@ const SignUpForm = ({ className, ...props }: Props) => {
             errors?.firstName?.type && (
               <Message
                 className={`absolute text-red-500`}
-                value={ERRORS_MESSAGE["firstName"][errors.firstName.type]}
+                value={errors.firstName.message ?? ""}
               />
             )
           }
@@ -105,7 +102,7 @@ const SignUpForm = ({ className, ...props }: Props) => {
             !!errors?.lastName && (
               <Message
                 className={`absolute text-red-500`}
-                value={ERRORS_MESSAGE["lastName"][errors.lastName.type]}
+                value={errors.lastName.message ?? ""}
               />
             )
           }
@@ -123,7 +120,7 @@ const SignUpForm = ({ className, ...props }: Props) => {
           !!errors?.email && (
             <Message
               className={`absolute text-red-500`}
-              value={ERRORS_MESSAGE["email"][errors.email.type]}
+              value={errors.email.message ?? ""}
             />
           )
         }
@@ -141,7 +138,7 @@ const SignUpForm = ({ className, ...props }: Props) => {
           !!errors?.password && (
             <Message
               className={`absolute text-red-500`}
-              value={ERRORS_MESSAGE["password"][errors.password.type]}
+              value={errors.password.message ?? ""}
             />
           )
         }
@@ -159,9 +156,7 @@ const SignUpForm = ({ className, ...props }: Props) => {
           !!errors?.confirmPassword && (
             <Message
               className={`absolute text-red-500`}
-              value={
-                ERRORS_MESSAGE["confirmPassword"][errors.confirmPassword.type]
-              }
+              value={errors.confirmPassword.message ?? ""}
             />
           )
         }
